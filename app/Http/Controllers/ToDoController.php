@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\User;
 use App\Model\ToDoList;
 use App\Http\Controllers\Controller;
 
@@ -36,10 +35,5 @@ class ToDoController extends Controller
         $toDo->delete();
 
         return 204;
-    }
-
-    public function userlist() {
-        $users = User::all();
-        return $users;
     }
 }
