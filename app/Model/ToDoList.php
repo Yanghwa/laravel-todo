@@ -10,7 +10,10 @@ class ToDoList extends Eloquent
      *
      * @var string
      */
+    
     protected $table = 'tb_todolist';
 
     protected $primaryKey = 'id';
+
+    protected $fillable = array('text', 'userId', 'done');
 }

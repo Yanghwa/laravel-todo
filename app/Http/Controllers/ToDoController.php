@@ -6,6 +6,8 @@ use Auth;
 use App\Model\ToDoList;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Http\Request;
+
 class ToDoController extends Controller
 {
     public function __construct() {
@@ -19,8 +21,20 @@ class ToDoController extends Controller
         return $list;
     }
 
-    public function create(Request $request) {
-        return ToDoList::create($request->all());
+    public function create() {
+        return view('todo.create');
+    }
+
+    public function createMethod(Request $request) {
+        $input = $request->all();
+        if($input['done'] == 'true') {
+            $input['done'] = true;
+        } else {
+            $input['done'] = false;
+        }
+        unset($input['_token']);
+        ToDoList::create($input);
+        return view('todo.create');
     }
 
     public function update(Request $request, $id) {
