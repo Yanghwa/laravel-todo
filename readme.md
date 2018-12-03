@@ -10,8 +10,9 @@
 ### User List
 - On the Right top header
 
-### Create To Do and Update (delete setting only api)
+### Create To Do and Update
 - After signing in, url path /todo, /todo_create, /todo/{id}
+- Delete is on update view
 
 ### reminder
 - Table seeder is not created. 

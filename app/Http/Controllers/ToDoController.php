@@ -52,9 +52,7 @@ class ToDoController extends Controller
     }
 
     public function delete($id) {
-        dd($id);
         $toDo = ToDoList::findOrFail($id);
-        dd($toDo);
         if($toDo)
             $toDo->delete(); 
         else
