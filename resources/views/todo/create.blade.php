@@ -31,7 +31,7 @@
                             <label for="done" class="col-md-4 col-form-label text-md-right">Done</label>
 
                             <div class="col-md-6">
-                                <input id="done" type="checkbox" class="form-control{{ $errors->has('done') ? ' is-invalid' : '' }}" name="done" value="true" required>
+                                <input id="done" type="checkbox" class="form-control{{ $errors->has('done') ? ' is-invalid' : '' }}" name="done" value="DONE">
                             </div>
                         </div>
 

@@ -31,7 +31,11 @@
                             <label for="done" class="col-md-4 col-form-label text-md-right">Done</label>
 
                             <div class="col-md-6">
-                                <input id="done" type="checkbox" class="form-control" name="done" value="{{$toDo->done}}">
+                                @if($toDo->done == 'DONE')
+                                <input id="done" type="checkbox" class="form-control" name="done" value="DONE" checked>
+                                @else
+                                <input id="done" type="checkbox" class="form-control" name="done" value="DONE">
+                                @endif
                             </div>
                         </div>
 
@@ -39,6 +43,15 @@
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     Update
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <form method="POST" action="{{ route('todo_remove', $toDo->id) }}">
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-warning">
+                                    Delete
                                 </button>
                             </div>
                         </div>

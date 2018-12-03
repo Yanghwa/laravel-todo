@@ -27,10 +27,8 @@ class ToDoController extends Controller
 
     public function createMethod(Request $request) {
         $input = $request->all();
-        if($input['done'] == 'true') {
-            $input['done'] = true;
-        } else {
-            $input['done'] = false;
+        if(!isset($input['done'])) {
+            $input['done'] = "TO DO";
         }
         unset($input['_token']);
         ToDoList::create($input);
@@ -45,20 +43,22 @@ class ToDoController extends Controller
     public function updateMethod(Request $request, $id) {
         $toDo = ToDoList::findOrFail($id);
         $input = $request->all();
-        if($input['done'] == 'true') {
-            $input['done'] = true;
-        } else {
-            $input['done'] = false;
+        if(!isset($input['done'])) {
+            $input['done'] = "TO DO";
         }
         unset($input['_token']);
         $toDo->update($input);
         return view('todo.update', compact('toDo'));
     }
 
-    public function delete(Request $request, $id) {
+    public function delete($id) {
+        dd($id);
         $toDo = ToDoList::findOrFail($id);
-        $toDo->delete();
-
-        return 204;
+        dd($toDo);
+        if($toDo)
+            $toDo->delete(); 
+        else
+            return response()->json(null);
+        return response()->json(null); 
     }
 }
