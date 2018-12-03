@@ -37,11 +37,22 @@ class ToDoController extends Controller
         return view('todo.create');
     }
 
-    public function update(Request $request, $id) {
+    public function update($id) {
         $toDo = ToDoList::findOrFail($id);
-        $toDo->update($request->all());
+        return view('todo.update', compact('toDo'));
+    }
 
-        return $toDo;
+    public function updateMethod(Request $request, $id) {
+        $toDo = ToDoList::findOrFail($id);
+        $input = $request->all();
+        if($input['done'] == 'true') {
+            $input['done'] = true;
+        } else {
+            $input['done'] = false;
+        }
+        unset($input['_token']);
+        $toDo->update($input);
+        return view('todo.update', compact('toDo'));
     }
 
     public function delete(Request $request, $id) {
