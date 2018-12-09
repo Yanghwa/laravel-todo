@@ -1,7 +1,7 @@
 ## Simple To Do
 
 ### To Test
-- `composer install`
+- `composer install`  Reference: [Composer](https://getcomposer.org)
 - create `.env` file using the `.env.example` file (DB connection setting)
 - `php artian key:generate` (generate key to run laravel)
 - run query using `sample.sql` (instead of seeder, stable query running)
