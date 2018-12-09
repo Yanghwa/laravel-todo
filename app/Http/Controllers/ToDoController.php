@@ -18,7 +18,8 @@ class ToDoController extends Controller
         $user = Auth::user();
         $userId = $user->id;
         $list = ToDoList::where('userId', $userId)->get();
-        return $list;
+        return view('todo.show', compact('list'));
+        // return $list;
     }
 
     public function create() {
